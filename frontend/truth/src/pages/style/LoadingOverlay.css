@@ -1,0 +1,138 @@
+/* LoadingOverlay.css */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .loading-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  
+  .magnifying-glass-container {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .magnifying-glass {
+    color: #ffffff;
+    animation: magnifyingGlassMove 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+  }
+  
+  .loading-text {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
+    text-align: center;
+    opacity: 0.9;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes magnifyingGlassMove {
+    0% {
+      transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+    25% {
+      transform: translate(10px, -10px) rotate(15deg) scale(1.1);
+    }
+    50% {
+      transform: translate(-5px, 15px) rotate(-10deg) scale(0.95);
+    }
+    75% {
+      transform: translate(-15px, -5px) rotate(20deg) scale(1.05);
+    }
+    100% {
+      transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+  }
+  
+  /* Additional subtle animations for enhanced effect */
+  .magnifying-glass-container::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    animation: pulseRing 2s ease-in-out infinite;
+  }
+  
+  .magnifying-glass-container::after {
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: pulseRing 2s ease-in-out infinite 0.5s;
+  }
+  
+  @keyframes pulseRing {
+    0% {
+      transform: scale(0.8);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.3;
+    }
+    100% {
+      transform: scale(0.8);
+      opacity: 1;
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .magnifying-glass {
+      width: 40px;
+      height: 40px;
+    }
+    
+    .magnifying-glass-container {
+      width: 60px;
+      height: 60px;
+    }
+    
+    .loading-text {
+      font-size: 16px;
+    }
+    
+    .magnifying-glass-container::before {
+      width: 80px;
+      height: 80px;
+    }
+    
+    .magnifying-glass-container::after {
+      width: 100px;
+      height: 100px;
+    }
+  }
